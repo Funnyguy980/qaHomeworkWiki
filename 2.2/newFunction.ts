@@ -1,11 +1,11 @@
 export function myFunction(myNum: number): string {
     if (myNum == 5) {
         return 'true'
-    } else if() {
-
-    }else if (){
-
-    }else {
-        
-    }
+    } else if(myNum > 5) {
+        return 'big'
+    } else if (myNum < 0) {
+        return 'negative'
+    }else if (myNum < 5) {
+        return 'false' 
+     }
 }
