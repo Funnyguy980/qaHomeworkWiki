@@ -23,7 +23,7 @@ const titleInput: By = By.name("titleEntry");
 const saveButton: By = By.id("saveBtn");
 const cancelButton: By = By.name("cancel");
 const errorCard: By = By.css(".errorCard");
-
+//these above where tricky to get used to using instead of the regular (By.name)
 describe("Employee Manager 1.2", () => {
 
     beforeEach(async () => {
@@ -53,7 +53,7 @@ describe("Employee Manager 1.2", () => {
         await driver.findElement(phillip).click();
         
         await driver.findElement(bernice).click();
-        
+        //I first did this using (By.name) but ended up changing it because it didnt work
         expect(
             await (await driver.findElement(nameInput)))
         });
@@ -87,18 +87,18 @@ describe("Employee Manager 1.2", () => {
             5. Open Bernice Ortiz's old record
             5. Verify the name field is the edited name
             */
-            await driver.findElement(bernice).click();
+            await driver.findElement(bernice).click();//this one is finding "Bernice"
             await driver.wait(
-                until.elementIsVisible(await driver.findElement(nameInput))
+                until.elementIsVisible(await driver.findElement(nameInput))  //this one is finding the name field 
             );
-            await driver.findElement(nameInput).clear();
-            await driver.findElement(nameInput).sendKeys("Test Name");
-            await driver.findElement(saveButton).click();
-            await driver.findElement(phillip).click();
+            await driver.findElement(nameInput).clear();  //this one is clearing it
+            await driver.findElement(nameInput).sendKeys("Test Name"); //this one im not too sure i think its like a start next phase type thing
+            await driver.findElement(saveButton).click();  //this ones just saving
+            await driver.findElement(phillip).click();  //finding and clicking on phillip
            
-            await driver.findElement(bernice).click();
+            await driver.findElement(bernice).click();  //going back to Bernice
             expect(
-                await (await driver.findElement(bernice)))
+                await (await driver.findElement(bernice)))  //I think this one is just confirming what we tested worked 
     });
 });
 
